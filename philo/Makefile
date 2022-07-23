@@ -1,0 +1,47 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2022/07/11 22:56:59 by mtavares          #+#    #+#              #
+#    Updated: 2022/07/18 16:05:52 by mtavares         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
+SRCS		=	$(foreach dir, $(SRCS_DIR), $(wildcard $(dir)/*.c))
+
+SRCS_DIR	=	srcs
+
+OBJS		=	$(subst $(SRCS_DIR), $(OBJS_DIR), $(SRCS:.c=.o))
+
+OBJS_DIR	=	objs
+
+NAME		=	philo
+
+CC			=	gcc
+
+CFLAGS		=	-Wall -Wextra -Werror -g -pthread
+
+RM			=	rm -rf
+
+all:		$(NAME)
+
+$(OBJS_DIR)/%.o :	$(SRCS_DIR)/%.c
+		@mkdir -p $(OBJS_DIR)
+		@$(CC) $(CFLAGS) -c $< -o $@
+
+$(NAME):	$(OBJS)
+		@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+
+clean:
+		$(RM) $(OBJS_DIR)
+
+fclean:		clean
+		$(RM) $(NAME)
+
+re:			fclean all
+
+.SILENT: all clean fclean re
+.PHONY: all clean fclean re 
