@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   have_last_arg.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/11 23:25:09 by mtavares          #+#    #+#             */
-/*   Updated: 2022/07/23 23:48:56 by mtavares         ###   ########.fr       */
+/*   Created: 2022/07/23 22:29:02 by mtavares          #+#    #+#             */
+/*   Updated: 2022/07/23 22:33:04 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-int	main(int ac, char **av)
+int	check_num_times_to_eat(t_gen gen)
 {
-	pthread_mutex_t	mutex;
-	t_gen			gen;
-	t_philo			*philo;
-	t_table			*table;
-	int				*is_dead;
-
-	if (ac != 5 || ac != 6)
+	if (!gen.have_last_arg)
+		return (1);
+	else if (!gen.num_time_to_eat)
 		return (0);
-	*is_dead = 0;
-	gen = create_gen(ac, av);
-	table = create_table(gen.philo_num);
-	philo = create_philo(&gen, table, &mutex, is_dead);
-	thread_creation(&philo);
+	return (1);
 }

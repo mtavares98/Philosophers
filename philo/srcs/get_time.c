@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   get_time.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/11 23:25:09 by mtavares          #+#    #+#             */
-/*   Updated: 2022/07/23 23:48:56 by mtavares         ###   ########.fr       */
+/*   Created: 2022/07/23 20:29:47 by mtavares          #+#    #+#             */
+/*   Updated: 2022/07/23 21:16:22 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-int	main(int ac, char **av)
+t_lu	get_time(t_lu start)
 {
-	pthread_mutex_t	mutex;
-	t_gen			gen;
-	t_philo			*philo;
-	t_table			*table;
-	int				*is_dead;
+	struct timeval	current_time;
 
-	if (ac != 5 || ac != 6)
-		return (0);
-	*is_dead = 0;
-	gen = create_gen(ac, av);
-	table = create_table(gen.philo_num);
-	philo = create_philo(&gen, table, &mutex, is_dead);
-	thread_creation(&philo);
+	if (gettimeofday(&current_time, NULL))
+		exit(1);
+	return ((current_time.tv_sec * 1000 + current_time.tv_usec / 1000) - start);
 }

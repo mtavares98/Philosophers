@@ -6,11 +6,13 @@
 #    By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/11 22:56:59 by mtavares          #+#    #+#              #
-#    Updated: 2022/07/18 16:05:52 by mtavares         ###   ########.fr        #
+#    Updated: 2022/07/23 20:29:35 by mtavares         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS		=	$(foreach dir, $(SRCS_DIR), $(wildcard $(dir)/*.c))
+SRCS		=	$(SRCS_DIR)/main.c \
+				$(SRCS_DIR)/atoi.c \
+				$(SRCS_DIR)/get_time.c \
 
 SRCS_DIR	=	srcs
 
