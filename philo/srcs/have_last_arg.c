@@ -3,20 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   have_last_arg.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/23 22:29:02 by mtavares          #+#    #+#             */
-/*   Updated: 2022/07/23 22:33:04 by mtavares         ###   ########.fr       */
+/*   Created: 2022/07/28 23:13:17 by mtavares          #+#    #+#             */
+/*   Updated: 2022/07/28 23:22:08 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-int	check_num_times_to_eat(t_gen gen)
+int	have_last_arg(int ac)
 {
-	if (!gen.have_last_arg)
+	if (ac == 6)
 		return (1);
-	else if (!gen.num_time_to_eat)
-		return (0);
-	return (1);
+	return (0);
 }

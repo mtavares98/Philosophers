@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 23:04:04 by mtavares          #+#    #+#             */
-/*   Updated: 2022/07/24 00:07:26 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/07/29 00:52:16 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,45 +21,41 @@
 # include <sys/time.h>
 
 typedef unsigned long	t_lu;
-typedef struct s_gen	t_gen;
+typedef struct s_data	t_data;
 typedef struct s_philo	t_philo;
 typedef struct s_table	t_table;
 
-struct s_gen
+struct s_data
 {
-	int			philo_num;
-	int			time_to_die;
-	int			time_to_eat;
-	int			time_to_sleep;
-	int			num_time_to_eat;
-	int			have_last_arg;
+	int		philo_num;
+	int		time_to_die;
+	int		time_to_eat;
+	int		time_to_sleep;
+	int		have_last_arg;
+	long	num_time_to_eat;
 };
 
 struct s_philo
 {
-	pthread_mutex_t	*mutex;
-	pthread_t		philo;
 	int				id;
 	int				*is_dead;
-	t_gen			*gen;
+	pthread_t		philo;
+	t_data			*data;
 	t_table			*table;
 };
 
 struct s_table
 {
-	int	id;
-	int	fork;
+	int				have_fork;
+	pthread_mutex_t	mutex_fork;
 };
 
-t_lu	get_time(t_lu start);
-void	thread_creation(t_philo *p);
-int		check_num_times_to_eat(t_gen gen);
-void	eating(t_philo *philo, t_lu start, int is_taken);
-t_table	*create_table(int philo_num);
-t_table	*create_table(int philo_num);
-t_gen	create_gen(int ac, char **av);
-t_philo	*create_philo(t_gen *gen, t_table *table, pthread_mutex_t *mutex, \
-int *is_dead);
+void	exit_free(t_table **table, t_philo **philo, int i, char *str);
+int		have_last_arg(int ac);
+t_data	intit_data(int ac, char **av);
+t_table	*init_table(t_data *data);
+t_philo	*init_philo(t_data *data, t_table **table, int	*is_dead);
+void	thread_creation(t_philo	**philo);
 int		ft_atoi(char *str);
 
 #endif

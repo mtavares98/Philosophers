@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_time.c                                         :+:      :+:    :+:   */
+/*   exit_free.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+        */
+/*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/23 20:29:47 by mtavares          #+#    #+#             */
-/*   Updated: 2022/07/23 21:16:22 by mtavares         ###   ########.fr       */
+/*   Created: 2022/07/28 23:43:53 by mtavares          #+#    #+#             */
+/*   Updated: 2022/07/29 01:08:33 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-t_lu	get_time(t_lu start)
+void	exit_free(t_table **table, t_philo **philo, int i, char *str)
 {
-	struct timeval	current_time;
-
-	if (gettimeofday(&current_time, NULL))
-		exit(1);
-	return ((current_time.tv_sec * 1000 + current_time.tv_usec / 1000) - start);
+	if (i)
+		printf("%s", str);
+	if (table)
+		free(table);
+	if (philo)
+	{
+		free((*philo)->table);
+		free(philo);
+	}
+	exit(i);
 }

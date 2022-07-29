@@ -3,16 +3,19 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mtavares <mtavares@student.42.fr>          +#+  +:+       +#+         #
+#    By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/11 22:56:59 by mtavares          #+#    #+#              #
-#    Updated: 2022/07/23 20:29:35 by mtavares         ###   ########.fr        #
+#    Updated: 2022/07/29 00:54:07 by mtavares         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS		=	$(SRCS_DIR)/main.c \
-				$(SRCS_DIR)/atoi.c \
-				$(SRCS_DIR)/get_time.c \
+SRCS		=	$(SRCS_DIR)/atoi.c \
+				$(SRCS_DIR)/exit_free.c \
+				$(SRCS_DIR)/have_last_arg.c \
+				$(SRCS_DIR)/init.c \
+				$(SRCS_DIR)/main.c \
+				$(SRCS_DIR)/thread.c \
 
 SRCS_DIR	=	srcs
 
@@ -24,7 +27,7 @@ NAME		=	philo
 
 CC			=	gcc
 
-CFLAGS		=	-Wall -Wextra -Werror -g -pthread
+CFLAGS		=	-Wall -Wextra -Werror -pthread -g #-fsanitize=address
 
 RM			=	rm -rf
 
@@ -46,4 +49,4 @@ fclean:		clean
 re:			fclean all
 
 .SILENT: all clean fclean re
-.PHONY: all clean fclean re 
+.PHONY: all clean fclean re
