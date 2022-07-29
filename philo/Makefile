@@ -6,7 +6,7 @@
 #    By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/11 22:56:59 by mtavares          #+#    #+#              #
-#    Updated: 2022/07/29 00:54:07 by mtavares         ###   ########.fr        #
+#    Updated: 2022/07/29 14:57:03 by mtavares         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,7 +27,7 @@ NAME		=	philo
 
 CC			=	gcc
 
-CFLAGS		=	-Wall -Wextra -Werror -pthread -g #-fsanitize=address
+CFLAGS		=	-Wall -Wextra -Werror -pthread -g -fsanitize=thread
 
 RM			=	rm -rf
 

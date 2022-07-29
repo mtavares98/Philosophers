@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 23:02:29 by mtavares          #+#    #+#             */
-/*   Updated: 2022/07/29 00:21:01 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/07/29 14:42:33 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,4 +30,5 @@ int	main(int ac, char **av)
 	if (!philo)
 		exit_free(&table, &philo, 1, "Allocation failed for the philo\n");
 	thread_creation(&philo);
+	exit_free(&table, &philo, 0, NULL);
 }
