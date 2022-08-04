@@ -1,35 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   atoi.c                                             :+:      :+:    :+:   */
+/*   print_message.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/18 14:24:02 by mtavares          #+#    #+#             */
-/*   Updated: 2022/08/03 15:48:29 by mtavares         ###   ########.fr       */
+/*   Created: 2022/07/29 18:03:30 by mtavares          #+#    #+#             */
+/*   Updated: 2022/08/03 18:04:40 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-int	ft_atoi(char *str)
+void	print_message(t_philo *p, char *str, int is_eating)
 {
-	long	num;
-	int		i;
-
-	num = 0;
-	i = -1;
-	while ((str[++i] > 8 && str[i] < 14) || str[i] == 32)
-		;
-	if (str[i] == '-' || str[i] == '+')
-		if (str[i++] == '-')
-			return (0);
-
-	while (str[i] >= '0' && str[i] <= '9')
-		num = num * 10 + (str[i++] - '0');
-	while (str[i] && ((str[i] > 8 && str[i] < 14) || str[i++] == 32))
-		;
-	if (str[i])
-		return (0);
-	return (num);
+	printf("%lu %i %s\n", get_time(p, is_eating), p->id, str);
 }

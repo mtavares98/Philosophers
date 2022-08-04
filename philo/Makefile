@@ -6,15 +6,19 @@
 #    By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/11 22:56:59 by mtavares          #+#    #+#              #
-#    Updated: 2022/07/29 14:57:03 by mtavares         ###   ########.fr        #
+#    Updated: 2022/08/03 23:49:19 by mtavares         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS		=	$(SRCS_DIR)/atoi.c \
+				$(SRCS_DIR)/eat.c \
 				$(SRCS_DIR)/exit_free.c \
+				$(SRCS_DIR)/get_time.c \
 				$(SRCS_DIR)/have_last_arg.c \
 				$(SRCS_DIR)/init.c \
+				$(SRCS_DIR)/is_dead.c \
 				$(SRCS_DIR)/main.c \
+				$(SRCS_DIR)/print_message.c \
 				$(SRCS_DIR)/thread.c \
 
 SRCS_DIR	=	srcs
@@ -27,7 +31,7 @@ NAME		=	philo
 
 CC			=	gcc
 
-CFLAGS		=	-Wall -Wextra -Werror -pthread -g -fsanitize=thread
+CFLAGS		=	-Wall -Wextra -Werror -pthread -g -fsanitize=address #-fsanitize=thread
 
 RM			=	rm -rf
 

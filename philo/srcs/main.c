@@ -6,29 +6,40 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 23:02:29 by mtavares          #+#    #+#             */
-/*   Updated: 2022/07/29 14:42:33 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/08/03 18:27:25 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
+/*	That big if is for doing exit_free when one of the conditions is true.
+	The last line is for doing exit_free when i have the last argument
+	invalid, which is optional. */
+
 int	main(int ac, char **av)
 {
 	t_data	data;
 	t_table	*table;
-	t_philo	*philo;
+	t_philo	*p;
 	int		is_dead;
+	int		is_not_valid;
 
-	if (ac != 5 && ac != 6)
+	if (ac < 5 && ac > 6)
 		exit_free(NULL, NULL, 1, "Wrong number of arguments\n");
 	data = intit_data(ac, av);
+	is_not_valid = ((data.philo_num <= 0) + (data.time_to_die <= 0) + \
+	(data.time_to_eat <= 0) + (data.time_to_sleep <= 0)) + \
+	(((!data.have_last_arg) * -1) + (data.num_time_to_eat <= 0));
+	if (is_not_valid)
+		exit_free(NULL, NULL, 1, "Invalid arguments\n");
 	table = init_table(&data);
 	if (!table)
 		exit_free(&table, NULL, 1, "Allocation failed for the table\n");
 	is_dead = 0;
-	philo = init_philo(&data, &table, &is_dead);
-	if (!philo)
-		exit_free(&table, &philo, 1, "Allocation failed for the philo\n");
-	thread_creation(&philo);
-	exit_free(&table, &philo, 0, NULL);
+	p = init_philo(&data, &table, &is_dead);
+	if (!p)
+		exit_free(&table, &p, 1, "Allocation failed for the philo\n");
+	thread_creation(&p);
+	exit_free(&table, &p, 0, NULL);
+	return (0);
 }

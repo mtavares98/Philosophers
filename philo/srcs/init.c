@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 23:06:45 by mtavares          #+#    #+#             */
-/*   Updated: 2022/07/29 00:52:06 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/08/03 23:40:41 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ t_data	intit_data(int ac, char **av)
 	if (data.have_last_arg)
 		data.num_time_to_eat = ft_atoi(av[5]);
 	else
-		data.num_time_to_eat = 2147483648;
+		data.num_time_to_eat = 0;
 	return (data);
 }
 
@@ -44,10 +44,11 @@ t_table	*init_table(t_data *data)
 
 t_philo	*init_philo(t_data *data, t_table **table, int	*is_dead)
 {
-	t_philo	*philo;
-	int		i;
+	pthread_mutex_t	dead;
+	t_philo			*philo;
+	int				i;
 
-	philo = NULL;
+	pthread_mutex_init(&dead, NULL);
 	philo = malloc(sizeof(t_philo) * data->philo_num);
 	if (!philo)
 		return (NULL);
@@ -58,6 +59,10 @@ t_philo	*init_philo(t_data *data, t_table **table, int	*is_dead)
 		philo[i].id = i;
 		philo[i].is_dead = is_dead;
 		philo[i].table = *table;
+		philo[i].time.start = 0;
+		philo[i].time.last_meal = 0;
+		philo[i].time.last_action = 0;
+		philo[i].dead = &dead;
 	}
 	return (philo);
 }

@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   atoi.c                                             :+:      :+:    :+:   */
+/*   is_dead.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/18 14:24:02 by mtavares          #+#    #+#             */
-/*   Updated: 2022/08/03 15:48:29 by mtavares         ###   ########.fr       */
+/*   Created: 2022/07/30 14:49:09 by mtavares          #+#    #+#             */
+/*   Updated: 2022/08/04 03:09:02 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-int	ft_atoi(char *str)
+int	is_dead(t_philo *p)
 {
-	long	num;
-	int		i;
-
-	num = 0;
-	i = -1;
-	while ((str[++i] > 8 && str[i] < 14) || str[i] == 32)
-		;
-	if (str[i] == '-' || str[i] == '+')
-		if (str[i++] == '-')
-			return (0);
-
-	while (str[i] >= '0' && str[i] <= '9')
-		num = num * 10 + (str[i++] - '0');
-	while (str[i] && ((str[i] > 8 && str[i] < 14) || str[i++] == 32))
-		;
-	if (str[i])
-		return (0);
-	return (num);
+	pthread_mutex_lock(p->dead);
+	if (get_actual_time() - p->time.last_meal >= (t_lu)p->data->time_to_die)
+		*(p->is_dead) = 1;
+	pthread_mutex_unlock(p->dead);
+	return (*(p->is_dead));
 }
