@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 23:02:29 by mtavares          #+#    #+#             */
-/*   Updated: 2022/08/03 18:27:25 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/09/09 22:21:27 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ int	main(int ac, char **av)
 	t_data	data;
 	t_table	*table;
 	t_philo	*p;
-	int		is_dead;
+	t_death	*death;
 	int		is_not_valid;
 
-	if (ac < 5 && ac > 6)
+	if (ac != 5 && ac != 6)
 		exit_free(NULL, NULL, 1, "Wrong number of arguments\n");
 	data = intit_data(ac, av);
 	is_not_valid = ((data.philo_num <= 0) + (data.time_to_die <= 0) + \
@@ -35,8 +35,8 @@ int	main(int ac, char **av)
 	table = init_table(&data);
 	if (!table)
 		exit_free(&table, NULL, 1, "Allocation failed for the table\n");
-	is_dead = 0;
-	p = init_philo(&data, &table, &is_dead);
+	death = init_death();
+	p = init_philo(&data, &table, death);
 	if (!p)
 		exit_free(&table, &p, 1, "Allocation failed for the philo\n");
 	thread_creation(&p);

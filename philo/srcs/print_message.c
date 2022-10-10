@@ -5,14 +5,20 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/07/29 18:03:30 by mtavares          #+#    #+#             */
-/*   Updated: 2022/08/03 18:04:40 by mtavares         ###   ########.fr       */
+/*   Created: 2022/08/27 18:21:20 by mtavares          #+#    #+#             */
+/*   Updated: 2022/09/09 20:49:35 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-void	print_message(t_philo *p, char *str, int is_eating)
+void	print_message(t_philo *p, t_time *t, char *str, int is_eating)
 {
-	printf("%lu %i %s\n", get_time(p, is_eating), p->id, str);
+	t_lu	diff;
+
+	t->last_action = current_time();
+	if (is_eating)
+		t->last_meal = t->last_action;
+	diff = time_diff(t->start, t->last_action);
+	printf("%lums philo %i %s\n", diff, p->id, str);
 }
