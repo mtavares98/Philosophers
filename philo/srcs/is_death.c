@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:42:03 by mtavares          #+#    #+#             */
-/*   Updated: 2022/09/09 23:17:54 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/11/10 22:10:36 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int	is_dead(t_philo *p, t_time *t)
 	|| ((p->num_time_eaten == p->data.num_time_to_eat) \
 	&& (p->data.have_last_arg)))
 	{
-		printf("Ainda nao morri");
 		pthread_mutex_lock(p->death->death);
 		death = 1;
 		if (!*p->death->is_death)

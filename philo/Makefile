@@ -6,7 +6,7 @@
 #    By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/11 22:56:59 by mtavares          #+#    #+#              #
-#    Updated: 2022/09/09 22:20:00 by mtavares         ###   ########.fr        #
+#    Updated: 2022/11/10 22:55:32 by mtavares         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,18 +23,27 @@ SRCS		=	$(SRCS_DIR)/atoi.c \
 
 SRCS_DIR	=	srcs
 
+OBJS	= $(subst $(SRCS_DIR), $(OBJS_DIR), $(SRCS:.c=.o))
+
+OBJS_DIR	=	objs
+
 NAME		=	philo
 
 CC			=	gcc
 
-CFLAGS		=	-Wall -Wextra -Werror -pthread -g -fsanitize=thread #-fsanitize=thread
+CFLAGS		=	-Wall -Wextra -Werror -pthread -g -fsanitize=address #-fsanitize=thread
 
 RM			=	rm -rf
 
 all:		$(NAME)
 
-$(NAME):
-		@$(CC) $(CFLAGS) $(SRCS) -o $(NAME)
+
+$(OBJS_DIR)/%.o:	$(SRCS_DIR)/%.c
+	mkdir -p objs
+	$(CC) $(CFLAGS) -c $< -o $@
+
+$(NAME):	$(OBJS)
+		$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 clean:
 		$(RM) $(OBJS_DIR)
@@ -44,5 +53,4 @@ fclean:		clean
 
 re:			fclean all
 
-.SILENT: all clean fclean re
 .PHONY: all clean fclean re

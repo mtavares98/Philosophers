@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 00:02:44 by mtavares          #+#    #+#             */
-/*   Updated: 2022/09/09 23:07:51 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/11/10 22:00:21 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,7 @@ int	taking_fork(t_philo *p, t_time *t, int is_first)
 	second = (p->id - ((!is_first)));
 	pthread_mutex_lock(&p->table[first].mutex_fork);
 	if (first == second)
-	{
 		return (1);
-	}
 	if (p->table[first].have_fork)
 	{
 		p->table[first].have_fork = 0;
