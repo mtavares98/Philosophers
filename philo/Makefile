@@ -6,7 +6,7 @@
 #    By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/11 22:56:59 by mtavares          #+#    #+#              #
-#    Updated: 2022/11/10 22:55:32 by mtavares         ###   ########.fr        #
+#    Updated: 2022/11/10 23:28:16 by mtavares         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,7 @@ OBJS_DIR	=	objs
 
 NAME		=	philo
 
-CC			=	gcc
+CC			=	cc
 
 CFLAGS		=	-Wall -Wextra -Werror -pthread -g -fsanitize=address #-fsanitize=thread
 

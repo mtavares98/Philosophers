@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 23:36:17 by mtavares          #+#    #+#             */
-/*   Updated: 2022/09/09 23:19:36 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/11/11 22:32:38 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,14 @@ static void	*philo_work(void *arg)
 	(p->data.have_last_arg) * p->data.num_time_to_eat && \
 	!is_dead(p, &timer))
 	{
-		if (!eat(p, &timer))
-		{
-			print_message(p, &timer, "is sleeping", 0);
-			usleep(p->data.time_to_sleep / 1000);
-			if (is_dead(p, &timer))
-				return (NULL);
-			print_message(p, &timer, "is thinking", 0);
-		}
+		eat(p, &timer);
 		if (is_dead(p, &timer))
 			return (NULL);
+		print_message(p, &timer, "is sleeping", 0);
+		usleep(p->data.time_to_sleep * 1000);
+		if (is_dead(p, &timer))
+			return (NULL);
+		print_message(p, &timer, "is thinking", 0);
 	}
 	return (NULL);
 }
