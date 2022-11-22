@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 00:02:44 by mtavares          #+#    #+#             */
-/*   Updated: 2022/11/11 22:35:46 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/11/22 01:55:47 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	taking_fork(t_philo *p, t_time *t, int is_first)
 	return (0);
 }
 
-void	putting_forks(t_philo *p, int is_first)
+void	putting_forks(t_philo *p, t_time *t, int is_first)
 {
 	int	first;
 	int	second;
@@ -51,6 +51,7 @@ void	putting_forks(t_philo *p, int is_first)
 	if (!p->table[first].have_fork)
 	{
 		p->table[first].have_fork = 1;
+		print_message(p, t, "has putting a fork", 0);
 		pthread_mutex_unlock(&p->table[first].mutex_fork);
 		pthread_mutex_lock(&p->table[second].mutex_fork);
 		p->table[second].have_fork = 1;
@@ -65,10 +66,10 @@ void	eat(t_philo *p, t_time *t)
 {
 	if (taking_fork(p, t, (!p->id)))
 		return ;
-	usleep(p->data.time_to_eat * 1000);
 	pthread_mutex_lock(p->print);
 	print_message(p, t, "is eating", 1);
+	usleep(p->data.time_to_eat * 1000);
 	pthread_mutex_unlock(p->print);
-	putting_forks(p, (!p->id));
+	putting_forks(p, t, (!p->id));
 	return ;
 }
