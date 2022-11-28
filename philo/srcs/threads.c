@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 23:36:17 by mtavares          #+#    #+#             */
-/*   Updated: 2022/11/22 01:48:30 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/11/22 15:28:49 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	*philo_work(void *arg)
 
 	p = (t_philo *)arg;
 	if (p->id % 2 == 0)
-		usleep(100);
+		usleep(10);
 	timer.start = current_time();
 	timer.last_action = timer.start;
 	timer.last_meal = timer.start;

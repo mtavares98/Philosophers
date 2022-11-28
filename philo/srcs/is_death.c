@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:42:03 by mtavares          #+#    #+#             */
-/*   Updated: 2022/11/11 22:26:16 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/11/28 16:27:13 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,7 @@ int	is_dead(t_philo *p, t_time *t)
 	int	death;
 
 	death = 0;
-	if (time_diff(t->last_meal, current_time()) >= (t_lu)p->data.time_to_die \
-	|| ((p->num_time_eaten == p->data.num_time_to_eat) \
-	&& (p->data.have_last_arg)))
+	if (time_diff(t->last_meal, current_time()) >= (t_lu)p->data.time_to_die)
 	{
 		pthread_mutex_lock(p->death->death);
 		death = 1;

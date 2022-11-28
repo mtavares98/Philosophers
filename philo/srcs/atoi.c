@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:24:02 by mtavares          #+#    #+#             */
-/*   Updated: 2022/08/03 15:48:29 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/11/22 14:40:31 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ int	ft_atoi(char *str)
 	if (str[i] == '-' || str[i] == '+')
 		if (str[i++] == '-')
 			return (0);
-
 	while (str[i] >= '0' && str[i] <= '9')
 		num = num * 10 + (str[i++] - '0');
 	while (str[i] && ((str[i] > 8 && str[i] < 14) || str[i++] == 32))
