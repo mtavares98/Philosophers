@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 23:06:45 by mtavares          #+#    #+#             */
-/*   Updated: 2022/09/09 22:28:13 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/11/30 17:47:55 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,36 +47,37 @@ t_table	*init_table(t_data *data)
 
 t_death	*init_death(void)
 {
-	static pthread_mutex_t	death_m;
-	static int				is_death = 0;
-	static t_death			death;
+	static t_death	death;
 
-	pthread_mutex_init(&death_m, NULL);
-	death.death = &death_m;
-	death.is_death = &is_death;
+	pthread_mutex_init(&death.death, NULL);
+	death.is_death = 1;
 	return (&death);
+}
+
+t_time	*init_timer(void)
+{
+	static t_time	timer;
+
+	return (&timer);
 }
 
 t_philo	*init_philo(t_data *data, t_table **table, t_death *death)
 {
-	t_philo					*philo;
-	static pthread_mutex_t	print;
-	int						i;
+	t_philo	*philo;
+	int		i;
 
 	philo = malloc(sizeof(t_philo) * data->philo_num);
 	if (!philo)
 	{
-		pthread_mutex_destroy(death->death);
+		pthread_mutex_destroy(&death->death);
 		return (NULL);
 	}
-	pthread_mutex_init(&print, NULL);
 	i = -1;
 	while (++i < data->philo_num)
 	{
 		philo[i].data = *data;
 		philo[i].id = i;
 		philo[i].table = *table;
-		philo[i].print = &print;
 		philo[i].death = death;
 		philo[i].num_time_eaten = -1;
 	}

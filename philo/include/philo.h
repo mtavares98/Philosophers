@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 23:04:04 by mtavares          #+#    #+#             */
-/*   Updated: 2022/11/11 22:22:23 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/11/30 18:01:49 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ typedef struct s_philo		t_philo;
 
 struct s_death
 {
-	int				*is_death;
-	pthread_mutex_t	*death;
+	int				is_death;
+	pthread_mutex_t	death;
 };
 
 struct s_data
@@ -46,8 +46,6 @@ struct s_data
 struct s_time
 {
 	t_lu	start;
-	t_lu	last_action;
-	t_lu	last_meal;
 };
 
 struct s_table
@@ -65,14 +63,18 @@ struct s_philo
 	t_death			*death;
 	t_data			data;
 	t_table			*table;
+	t_time			*t;
+	t_lu			last_action;
+	t_lu			last_meal;
 };
 
+t_time	*init_timer(void);
 void	exit_free(t_table **table, t_philo **philo, int i, char *str);
-int		is_dead(t_philo *p, t_time *t);
+int		is_dead(t_philo *p);
 t_lu	current_time(void);
 t_lu	time_diff(t_lu start, t_lu last_action);
-void	print_message(t_philo *p, t_time *t, char *str, int is_eating);
-void	eat(t_philo *p, t_time *t);
+void	print_message(t_philo *p, char *str, int is_eating);
+int		eat(t_philo *p);
 int		have_last_arg(int ac);
 t_death	*init_death(void);
 t_data	intit_data(int ac, char **av);
