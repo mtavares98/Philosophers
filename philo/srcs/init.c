@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 23:06:45 by mtavares          #+#    #+#             */
-/*   Updated: 2022/11/30 17:47:55 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/05 18:16:22 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ t_death	*init_death(void)
 	static t_death	death;
 
 	pthread_mutex_init(&death.death, NULL);
-	death.is_death = 1;
 	return (&death);
 }
 

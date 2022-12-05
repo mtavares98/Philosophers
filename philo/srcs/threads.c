@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 23:36:17 by mtavares          #+#    #+#             */
-/*   Updated: 2022/11/30 18:02:50 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/01 18:30:48 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,8 @@ static void	*philo_work(void *arg)
 
 	p = (t_philo *)arg;
 	if (p->id % 2 == 0)
-		usleep(100);
+		usleep(1000);
 	pthread_mutex_lock(p->print);
-	p->t = init_timer();
-	p->t->start = current_time();
-	p->last_meal = p->t->start;
-	p->last_action = p->t->start;
 	pthread_mutex_unlock(p->print);
 	while (++p->num_time_eaten * (p->data.have_last_arg) <= \
 	(p->data.have_last_arg) * p->data.num_time_to_eat && \
@@ -43,14 +39,20 @@ static void	*philo_work(void *arg)
 
 void	thread_creation(t_philo **philo)
 {
+	t_time					*time;
 	static pthread_mutex_t	print;
 	int						i;
 
+	time = init_timer();
+	time->start = current_time();
 	pthread_mutex_init(&print, NULL);
 	i = -1;
 	while (++i < (*philo)[0].data.philo_num)
 	{
 		(*philo)[i].print = &print;
+		(*philo)[i].t = time;
+		(*philo)[i].last_action = time->start;
+		(*philo)[i].last_meal = time->start;
 		pthread_create(&(*philo)[i].philo, NULL, &philo_work, (*philo + i));
 	}
 	i = -1;
