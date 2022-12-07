@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 23:04:04 by mtavares          #+#    #+#             */
-/*   Updated: 2022/11/30 18:01:49 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/06 16:53:58 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ struct s_table
 
 struct s_philo
 {
+	int				hold_forks;
 	int				id;
 	int				num_time_eaten;
 	pthread_t		philo;
