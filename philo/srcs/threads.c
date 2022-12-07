@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 23:36:17 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/06 21:49:05 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/07 17:01:00 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,43 +18,35 @@ static void	*philo_work(void *arg)
 
 	p = (t_philo *)arg;
 	if (p->id % 2)
-		usleep(1000);
+		usleep(10000);
 	pthread_mutex_lock(p->print);
 	pthread_mutex_unlock(p->print);
-	while (++p->num_time_eaten * (p->data.have_last_arg) <= \
-	(p->data.have_last_arg) * p->data.num_time_to_eat && \
-	!is_dead(p))
+	while (!is_dead(p))
 	{
-		if (eat(p))
-		{
-			if (is_dead(p))
-				return (NULL);
-			print_message(p, "is sleeping", 0);
-			usleep(p->data.time_to_sleep * 1000);
-			if (is_dead(p))
-				return (NULL);
-			print_message(p, "is thinking", 0);
-		}
+		eat(p);
+		if (++p->num_time_eaten * (p->data.have_last_arg) > \
+		(p->data.have_last_arg) * p->data.num_time_to_eat || is_dead(p))
+			break ;
+		print_message(p, "is sleeping");
+		sleep_action(p->data.time_to_sleep, p);
+		if (is_dead(p))
+			return (NULL);
+		print_message(p, "is thinking");
 	}
 	return (NULL);
 }
 
 void	thread_creation(t_philo **philo)
 {
-	t_time					*time;
 	static pthread_mutex_t	print;
 	int						i;
 
-	time = init_timer();
-	time->start = current_time();
 	pthread_mutex_init(&print, NULL);
+	(init_timer())->start = current_time();
 	i = -1;
 	while (++i < (*philo)[0].data.philo_num)
 	{
-		(*philo)[i].print = &print;
-		(*philo)[i].t = time;
-		(*philo)[i].last_action = time->start;
-		(*philo)[i].last_meal = time->start;
+		(*philo)[i].last_meal = (init_timer())->start;
 		pthread_create(&(*philo)[i].philo, NULL, &philo_work, (*philo + i));
 	}
 	i = -1;

@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 23:04:04 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/06 16:53:58 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/07 16:50:44 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,17 +65,19 @@ struct s_philo
 	t_data			data;
 	t_table			*table;
 	t_time			*t;
-	t_lu			last_action;
 	t_lu			last_meal;
 };
 
+void	sleep_action(t_lu action, t_philo *p);
+int		check_death(t_philo *p);
+int		is_dead(t_philo *p);
 t_time	*init_timer(void);
 void	exit_free(t_table **table, t_philo **philo, int i, char *str);
-int		is_dead(t_philo *p);
 t_lu	current_time(void);
 t_lu	time_diff(t_lu start, t_lu last_action);
-void	print_message(t_philo *p, char *str, int is_eating);
-int		eat(t_philo *p);
+void	print_two_messages(t_philo *p);
+void	print_message(t_philo *p, char *str);
+void	eat(t_philo *p);
 int		have_last_arg(int ac);
 t_death	*init_death(void);
 t_data	intit_data(int ac, char **av);

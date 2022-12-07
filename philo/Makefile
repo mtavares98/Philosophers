@@ -6,7 +6,7 @@
 #    By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/11 22:56:59 by mtavares          #+#    #+#              #
-#    Updated: 2022/11/30 17:51:17 by mtavares         ###   ########.fr        #
+#    Updated: 2022/12/07 16:14:23 by mtavares         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRCS		=	$(SRCS_DIR)/atoi.c \
 				$(SRCS_DIR)/print_message.c \
 				$(SRCS_DIR)/threads.c \
 				$(SRCS_DIR)/time.c \
+				$(SRCS_DIR)/sleep.c \
 
 SRCS_DIR	=	srcs
 
