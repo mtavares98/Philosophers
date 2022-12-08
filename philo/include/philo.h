@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 23:04:04 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/07 16:50:44 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/08 17:29:39 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ struct s_data
 	int	time_to_die;
 	int	time_to_eat;
 	int	time_to_sleep;
-	int	have_last_arg;
 	int	num_time_to_eat;
 };
 
@@ -68,6 +67,7 @@ struct s_philo
 	t_lu			last_meal;
 };
 
+void	print_debug(t_philo *p);
 void	sleep_action(t_lu action, t_philo *p);
 int		check_death(t_philo *p);
 int		is_dead(t_philo *p);

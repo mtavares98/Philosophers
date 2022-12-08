@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 23:02:29 by mtavares          #+#    #+#             */
-/*   Updated: 2022/11/30 18:02:31 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/08 17:36:30 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,12 @@ int	main(int ac, char **av)
 	t_table	*table;
 	t_philo	*p;
 	t_death	*death;
-	int		is_not_valid;
 
 	if (ac != 5 && ac != 6)
 		exit_free(NULL, NULL, 1, "Wrong number of arguments\n");
 	data = intit_data(ac, av);
-	is_not_valid = ((data.philo_num <= 0) + (data.time_to_die <= 0) + \
-	(data.time_to_eat <= 0) + (data.time_to_sleep <= 0)) + \
-	(((!data.have_last_arg) * -1) + (data.num_time_to_eat <= 0));
-	if (is_not_valid)
+	if (data.philo_num == 0 || data.time_to_die == 0 || data.time_to_eat == 0 \
+	|| data.time_to_sleep == 0 || data.num_time_to_eat == 0)
 		exit_free(NULL, NULL, 1, "Invalid arguments\n");
 	table = init_table(&data);
 	if (!table)

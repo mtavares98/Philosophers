@@ -6,11 +6,19 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 18:21:20 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/07 16:51:40 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/08 17:28:09 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
+
+void	print_debug(t_philo *p)
+{
+	pthread_mutex_lock(p->print);
+	printf("%lu %i num_eaten: %i\n", \
+	time_diff(p->t->start, current_time()), p->id + 1, p->num_time_eaten);
+	pthread_mutex_unlock(p->print);
+}
 
 void	print_two_messages(t_philo *p)
 {

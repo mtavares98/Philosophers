@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 00:02:44 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/07 16:51:27 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/08 18:24:00 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ void	taking_fork(t_philo *p, int fork)
 			pthread_mutex_unlock(&p->table[fork].mutex_fork);
 			break ;
 		}
-		else
-			pthread_mutex_unlock(&p->table[fork].mutex_fork);
+		pthread_mutex_unlock(&p->table[fork].mutex_fork);
 	}
 }
 
@@ -49,6 +48,7 @@ void	eat(t_philo *p)
 	if (!check_death(p))
 		print_two_messages(p);
 	sleep_action(p->data.time_to_eat, p);
+	p->num_time_eaten++;
 	putting_forks(p, first);
 	putting_forks(p, second);
 }
