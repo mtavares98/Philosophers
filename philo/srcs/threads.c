@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 23:36:17 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/07 17:01:00 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/08 01:18:27 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ static void	*philo_work(void *arg)
 	while (!is_dead(p))
 	{
 		eat(p);
-		if (++p->num_time_eaten * (p->data.have_last_arg) > \
-		(p->data.have_last_arg) * p->data.num_time_to_eat || is_dead(p))
+		if ((p->data.num_time_to_eat != -1 && \
+		++p->num_time_eaten == p->data.num_time_to_eat) || is_dead(p))
 			break ;
 		print_message(p, "is sleeping");
 		sleep_action(p->data.time_to_sleep, p);
@@ -46,9 +46,12 @@ void	thread_creation(t_philo **philo)
 	i = -1;
 	while (++i < (*philo)[0].data.philo_num)
 	{
+		(*philo)[i].print = &print;
 		(*philo)[i].last_meal = (init_timer())->start;
-		pthread_create(&(*philo)[i].philo, NULL, &philo_work, (*philo + i));
 	}
+	i = -1;
+	while (++i < (*philo)[0].data.philo_num)
+		pthread_create(&(*philo)[i].philo, NULL, &philo_work, (*philo + i));
 	i = -1;
 	while (++i < (*philo)->data.philo_num)
 		pthread_join((*philo)[i].philo, NULL);
