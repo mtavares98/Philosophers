@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 23:36:17 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/08 18:30:05 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/08 18:48:53 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ static void	*philo_work(void *arg)
 	t_philo	*p;
 
 	p = (t_philo *)arg;
-	if (p->id % 2)
-		usleep(1000);
 	while (!is_dead(p))
 	{
 		eat(p);
@@ -30,6 +28,8 @@ static void	*philo_work(void *arg)
 		if (is_dead(p))
 			return (NULL);
 		print_message(p, "is thinking");
+		if (p->id % 2)
+			usleep(500);
 	}
 	return (NULL);
 }
