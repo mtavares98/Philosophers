@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 23:36:17 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/09 16:53:42 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/09 17:36:53 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	*philo_work(void *arg)
 	t_philo	*p;
 
 	p = (t_philo *)arg;
-	if (p->id % 2)
+	if (!(p->id % 2))
 		usleep(10000);
 	while (!is_dead(p))
 	{
