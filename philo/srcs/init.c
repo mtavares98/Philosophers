@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 23:06:45 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/09 17:02:02 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/09 18:46:47 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,7 +77,7 @@ t_philo	*init_philo(t_data *data, t_table **table, t_death *death)
 		philo[i].id = i + 1;
 		philo[i].table = *table;
 		philo[i].death = death;
-		philo[i].num_time_eaten = -1;
+		philo[i].num_time_eaten = 0;
 		philo[i].hold_forks = 0;
 		philo[i].t = init_timer();
 	}
