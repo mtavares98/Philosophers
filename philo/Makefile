@@ -6,14 +6,13 @@
 #    By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/11 22:56:59 by mtavares          #+#    #+#              #
-#    Updated: 2022/12/07 16:14:23 by mtavares         ###   ########.fr        #
+#    Updated: 2022/12/09 16:40:21 by mtavares         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS		=	$(SRCS_DIR)/atoi.c \
 				$(SRCS_DIR)/eat.c \
 				$(SRCS_DIR)/exit_free.c \
-				$(SRCS_DIR)/have_last_arg.c \
 				$(SRCS_DIR)/init.c \
 				$(SRCS_DIR)/is_death.c \
 				$(SRCS_DIR)/main.c \

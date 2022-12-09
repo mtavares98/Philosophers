@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 23:06:45 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/07 16:57:57 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/09 16:40:55 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,14 @@ t_data	intit_data(int ac, char **av)
 {
 	t_data	data;
 
-	data.have_last_arg = have_last_arg(ac);
 	data.philo_num = ft_atoi(av[1]);
 	data.time_to_die = ft_atoi(av[2]);
 	data.time_to_eat = ft_atoi(av[3]);
 	data.time_to_sleep = ft_atoi(av[4]);
-	if (data.have_last_arg)
+	if (ac == 6)
 		data.num_time_to_eat = ft_atoi(av[5]);
 	else
-		data.num_time_to_eat = 0;
+		data.num_time_to_eat = -1;
 	return (data);
 }
 

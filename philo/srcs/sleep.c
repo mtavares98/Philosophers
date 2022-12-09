@@ -6,13 +6,13 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 15:58:30 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/07 16:13:30 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/09 16:49:40 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/philo.h"
 
-void	sleep_action(t_lu action, t_philo *p)
+int	sleep_action(t_lu action, t_philo *p)
 {
 	t_lu	begin;
 	t_lu	passed;
@@ -21,7 +21,10 @@ void	sleep_action(t_lu action, t_philo *p)
 	passed = 0;
 	while (!is_dead(p) && passed < action)
 	{
+		if (check_death(p))
+			return (1);
 		usleep(100);
 		passed = time_diff(begin, current_time());
 	}
+	return (passed >= action);
 }
