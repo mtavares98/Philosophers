@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 23:36:17 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/08 18:48:53 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/09 16:38:31 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,15 @@ static void	*philo_work(void *arg)
 	t_philo	*p;
 
 	p = (t_philo *)arg;
+	if (p->id % 2)
+		usleep(10000);
+	pthread_mutex_lock(p->print);
+	pthread_mutex_unlock(p->print);
 	while (!is_dead(p))
 	{
 		eat(p);
 		if ((p->data.num_time_to_eat != -1 && \
-		p->num_time_eaten == p->data.num_time_to_eat) || is_dead(p))
+		++p->num_time_eaten == p->data.num_time_to_eat) || is_dead(p))
 			break ;
 		print_message(p, "is sleeping");
 		sleep_action(p->data.time_to_sleep, p);
