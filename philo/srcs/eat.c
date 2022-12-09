@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 00:02:44 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/09 16:54:37 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/09 17:02:22 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,9 @@ int	eat(t_philo *p)
 	int	first;
 	int	second;
 
-	first = ((p->id == 0) * (p->data.philo_num - 1)) + ((p->id != 0) * (p->id));
-	second = (p->id - (p->id != 0));
+	first = ((p->id == 1) * (p->data.philo_num - 1)) + \
+	((p->id != 1) * (p->id -1));
+	second = (p->id -1 - (p->id != 1));
 	taking_fork(p, first);
 	if (check_death(p))
 		return (1);
