@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 23:04:04 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/09 16:50:41 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/22 20:12:27 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@
 # include <stdlib.h>
 # include <sys/time.h>
 
-typedef unsigned long		t_lu;
-typedef struct s_data		t_data;
-typedef struct s_table		t_table;
-typedef struct s_death		t_death;
-typedef struct s_time		t_time;
-typedef struct s_philo		t_philo;
+typedef unsigned long	t_lu;
+typedef struct s_data	t_data;
+typedef struct s_table	t_table;
+typedef struct s_death	t_death;
+typedef struct s_time	t_time;
+typedef struct s_philo	t_philo;
 
 struct s_death
 {
@@ -78,7 +78,6 @@ t_lu	time_diff(t_lu start, t_lu last_action);
 void	print_two_messages(t_philo *p);
 void	print_message(t_philo *p, char *str);
 int		eat(t_philo *p);
-int		have_last_arg(int ac);
 t_death	*init_death(void);
 t_data	intit_data(int ac, char **av);
 t_table	*init_table(t_data *data);
