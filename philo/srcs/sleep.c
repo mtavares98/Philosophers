@@ -6,11 +6,11 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 15:58:30 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/09 16:49:40 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/29 18:42:17 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philo.h"
+#include <philo.h>
 
 int	sleep_action(t_lu action, t_philo *p)
 {

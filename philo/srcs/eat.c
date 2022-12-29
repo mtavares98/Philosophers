@@ -6,11 +6,11 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 00:02:44 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/09 17:02:22 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/29 18:41:47 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philo.h"
+#include <philo.h>
 
 void	putting_forks(t_philo *p, int fork)
 {

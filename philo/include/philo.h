@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 23:04:04 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/09 16:50:41 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/19 14:40:08 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ struct s_data
 	int	time_to_die;
 	int	time_to_eat;
 	int	time_to_sleep;
-	int	have_last_arg;
 	int	num_time_to_eat;
 };
 
@@ -56,7 +55,6 @@ struct s_table
 
 struct s_philo
 {
-	int				hold_forks;
 	int				id;
 	int				num_time_eaten;
 	pthread_t		philo;
@@ -78,7 +76,6 @@ t_lu	time_diff(t_lu start, t_lu last_action);
 void	print_two_messages(t_philo *p);
 void	print_message(t_philo *p, char *str);
 int		eat(t_philo *p);
-int		have_last_arg(int ac);
 t_death	*init_death(void);
 t_data	intit_data(int ac, char **av);
 t_table	*init_table(t_data *data);

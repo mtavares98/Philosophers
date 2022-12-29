@@ -6,11 +6,11 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 23:42:03 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/09 16:46:05 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/29 18:42:02 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philo.h"
+#include <philo.h>
 
 int	check_death(t_philo *p)
 {

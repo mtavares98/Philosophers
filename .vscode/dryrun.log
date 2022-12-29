@@ -1,6 +1,0 @@
-make --dry-run --keep-going --print-directory
-make: Entering directory '/home/mtavares/curso42/philosophers'
-make: Leaving directory '/home/mtavares/curso42/philosophers'
- 
-make: *** No targets specified and no makefile found.  Stop.
-

@@ -6,11 +6,11 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/18 14:24:02 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/09 18:56:53 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/29 18:41:32 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philo.h"
+#include <philo.h>
 
 int	ft_atoi(char *str)
 {

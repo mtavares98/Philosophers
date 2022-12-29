@@ -6,11 +6,11 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/27 18:21:20 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/09 17:03:06 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/29 18:42:12 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philo.h"
+#include <philo.h>
 
 void	print_two_messages(t_philo *p)
 {

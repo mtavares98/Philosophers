@@ -6,11 +6,11 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 23:06:45 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/09 18:46:47 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/29 18:41:57 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philo.h"
+#include <philo.h>
 
 t_data	intit_data(int ac, char **av)
 {
@@ -78,7 +78,6 @@ t_philo	*init_philo(t_data *data, t_table **table, t_death *death)
 		philo[i].table = *table;
 		philo[i].death = death;
 		philo[i].num_time_eaten = 0;
-		philo[i].hold_forks = 0;
 		philo[i].t = init_timer();
 	}
 	return (philo);

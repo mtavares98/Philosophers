@@ -5,35 +5,29 @@
 	"version": "0.2.0",
 	"configurations": [
 		{
-			"name": "(gdb) Launch",
+			"name": "(gdb) Iniciar",
 			"type": "cppdbg",
 			"request": "launch",
-			"program": "${workspaceFolder}/philo/philo",
-			"args": [
-				"1",
-				"2",
-				"3",
-				"4",
-				"5"
-			],
+			"program": "${workspaceFolder}/philo",
+			"args": [],
 			"stopAtEntry": false,
 			"cwd": "${fileDirname}",
 			"environment": [],
 			"externalConsole": false,
 			"MIMode": "gdb",
+			"miDebuggerPath": "/usr/bin/gdb",
 			"setupCommands": [
 				{
-					"description": "Enable pretty-printing for gdb",
+					"description": "Habilitar a reformatação automática para gdb",
 					"text": "-enable-pretty-printing",
 					"ignoreFailures": true
 				},
 				{
-					"description":  "Set Disassembly Flavor to Intel",
+					"description": "Definir Tipo de Desmontagem como Intel",
 					"text": "-gdb-set disassembly-flavor intel",
 					"ignoreFailures": true
 				}
 			]
 		}
-
 	]
 }

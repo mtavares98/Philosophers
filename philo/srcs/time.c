@@ -6,11 +6,11 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/26 23:47:08 by mtavares          #+#    #+#             */
-/*   Updated: 2022/08/29 19:42:30 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/29 18:42:26 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/philo.h"
+#include <philo.h>
 
 t_lu	current_time(void)
 {
