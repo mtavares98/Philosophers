@@ -6,15 +6,11 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/28 23:02:29 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/29 18:42:07 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/29 19:12:22 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <philo.h>
-
-/*	That big if is for doing exit_free when one of the conditions is true.
-	The last line is for doing exit_free when i have the last argument
-	invalid, which is optional. */
 
 int	main(int ac, char **av)
 {

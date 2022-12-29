@@ -6,7 +6,7 @@
 /*   By: mtavares <mtavares@student.42lisboa.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/11 23:04:04 by mtavares          #+#    #+#             */
-/*   Updated: 2022/12/19 14:40:08 by mtavares         ###   ########.fr       */
+/*   Updated: 2022/12/29 19:11:49 by mtavares         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,12 @@
 # include <stdlib.h>
 # include <sys/time.h>
 
-typedef unsigned long		t_lu;
-typedef struct s_data		t_data;
-typedef struct s_table		t_table;
-typedef struct s_death		t_death;
-typedef struct s_time		t_time;
-typedef struct s_philo		t_philo;
+typedef unsigned long	t_lu;
+typedef struct s_data	t_data;
+typedef struct s_table	t_table;
+typedef struct s_death	t_death;
+typedef struct s_time	t_time;
+typedef struct s_philo	t_philo;
 
 struct s_death
 {
